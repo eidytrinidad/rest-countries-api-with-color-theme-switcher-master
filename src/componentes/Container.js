@@ -8,7 +8,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 function Container() {
   const [countries,,,,,,,darkMode] = useContext(CountryContext);
 
-  console.log(darkMode)
+
   return (
     <div style={(darkMode) ? DarkMode : LightMode} className="Container">
       <Router>

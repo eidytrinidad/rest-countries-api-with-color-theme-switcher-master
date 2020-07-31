@@ -6,7 +6,7 @@ import { CountryContext } from './CountryProvider';
 
 function Country(props) {
 
-const [,,,,,,,,darkMode] = useContext(CountryContext);
+const [,,,,,,,darkMode] = useContext(CountryContext);
 const {name: countryName} = props.location.state;
 
 const [country, setCountry] = useState([])
@@ -29,28 +29,28 @@ getCountry();
 
 }, [countryName])
 
-
+console.log(darkMode)
 return (
 <div className="CountryComponent">
 
 
 
-    <div className="contenedor">
-        <Link to="/"><button > <i className="fa fa-arrow-left"></i> Back</button></Link>
+    <div className="contenedorBtn">
+        <Link to="/"><button style={(darkMode) ? DarkMode.btn : LightMode}> <i className="fa fa-arrow-left"></i> Back</button></Link>
 
     </div>
 {
         country.map(country=>(
 
-            <section  className="contenedor">
+            <section key={country.name} className="contenedor">
         
                 <article className="imagen">
                     <img src={country.flag} alt="" />
                 </article>
         
-                <article className="text" >
+                <article className="text"  style={(darkMode) ? DarkMode : LightMode}>
                     <h2 >{country.name}</h2>
-                    <div className="countryDetails" >
+                    <div className="countryDetails"  style={(darkMode) ? DarkMode : LightMode}>
         
                         <div>
                             <p><span>Native Name:</span> {country.nativeName}</p>
@@ -82,9 +82,12 @@ return (
 
 const DarkMode={
    
-  color:"#fff"
-   
-  
+  color:"#fff",
+  btn:{
+      background:"#2b3945",
+      color:"#fff",
+      boxShadow:"0 0 0 0"
+  }
   }
   const LightMode={
     color:"#000"
